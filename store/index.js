@@ -1,4 +1,4 @@
-const getDefalutState = () => {
+const getDefaultState = () => {
     return {
         houseRules: [],
         auth: {
@@ -7,7 +7,7 @@ const getDefalutState = () => {
     }
 }
 
-export const state = () => getDefalutState()
+export const state = () => getDefaultState()
 
 export const mutations = {
     setHouseRules(state, { houseRules }) {
@@ -17,7 +17,7 @@ export const mutations = {
         state.auth.loggedIn = true
     },
     resetState(state) {
-        Object.assign(state, getDefalutState())
+        Object.assign(state, getDefaultState())
     }
 }
 
