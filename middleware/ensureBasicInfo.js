@@ -9,8 +9,4 @@ export default async function ({ store, app }) {
 	if (!store.state.auth.loggedIn) {
 		return false
 	}
-
-	if (store.state.houseRules.length === 0) {
-        await store.dispatch('getHouseRules')
-    }
 }

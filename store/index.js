@@ -1,6 +1,5 @@
 const getDefaultState = () => {
     return {
-        houseRules: [],
         auth: {
             loggedIn: false
         }
@@ -22,9 +21,11 @@ export const mutations = {
 }
 
 export const actions = {   
-    getHouseRules() {
-        return this.$axios.$get('/').then((response) => {
-            this.commit('setHouseRules', { houseRules: response.data })
+    getHouseRules(context, { pageNumber }) {
+        return this.$axios.$get('/',{
+            params: {
+                page: pageNumber ? pageNumber : 1
+            }
         }).catch((error) => {
             console.log(error)
         })
