@@ -29,6 +29,18 @@ export const actions = {
         }).catch((error) => {
             console.log(error)
         })
+    },
+    updateHouseRules(context, { houseRules }) {
+        return this.$axios.$put('/' + houseRules.id, {
+            house_rules: houseRules
+        }).catch((error) => {
+            console.log(error)
+        })
+    },
+    deleteHouseRules(context, { houseRules }) {
+        return this.$axios.$delete('/' + houseRules.id).catch((error) => {
+            console.log(error)
+        })
     }
 }
 
