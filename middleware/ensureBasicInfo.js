@@ -1,5 +1,4 @@
 export default async function ({ store, app }) {
-    console.log(store.state)
     const token = localStorage.getItem('token')
     if (token) {
         store.commit('isLoggedIn')
