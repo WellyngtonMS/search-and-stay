@@ -1,26 +1,29 @@
 <template>
     <v-container fluid>
-        <v-row>
+        <v-row>            
             <v-col v-for="(item, index) in items" :key="index" cols="12" sm="6" md="4" lg="4">
-                <Cards :item="item" />
+                <ListItem :item="item" @update="reload" />
             </v-col>
         </v-row>
         <infinite-loading spinner="spiral" @infinite="infiniteHandler" />
+        <CreateItem v-if="$route.query.create" @update="reload" />
     </v-container>
 </template>
 
 <script>
 import { mapActions } from "vuex";
-import Cards from "@/components/Cards/index.vue";
+import ListItem from "@/components/ListItem/index.vue";
+import CreateItem from "@/components/CreateItem/index";
 export default {
     components: {
-        Cards,
+        ListItem,
+        CreateItem,
     },
     data() {
         return {
             page: 1,
-            items: []
-        };
+            items: [],
+        }
     },
     methods: {
         ...mapActions(['getHouseRules']),
@@ -34,6 +37,11 @@ export default {
                 $state.loaded()
             }
         },
+        reload() {
+            setTimeout(() => {
+                window.location.reload()
+            }, 500)
+        }
     }
 };
 </script>
