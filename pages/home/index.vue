@@ -1,11 +1,12 @@
 <template>
     <v-container fluid>
+        <Search @itemSearch="itemSearch" @reloadItems="reload" />
         <v-row>            
             <v-col v-for="(item, index) in items" :key="index" cols="12" sm="6" md="4" lg="4">
                 <ListItem :item="item" @update="reload" />
             </v-col>
         </v-row>
-        <infinite-loading spinner="spiral" @infinite="infiniteHandler" />
+        <infinite-loading spinner="spiral" :identifier="infiniteId" @infinite="infiniteHandler" />
         <CreateItem v-if="$route.query.create" @update="reload" />
     </v-container>
 </template>
@@ -14,15 +15,18 @@
 import { mapActions } from "vuex";
 import ListItem from "@/components/ListItem/index.vue";
 import CreateItem from "@/components/CreateItem/index";
+import Search from "@/components/Search/index.vue";
 export default {
     components: {
         ListItem,
         CreateItem,
+        Search,
     },
     data() {
         return {
             page: 1,
             items: [],
+            infiniteId: +new Date(),
         }
     },
     methods: {
@@ -37,10 +41,13 @@ export default {
                 $state.loaded()
             }
         },
+        itemSearch(item) {
+            this.items = [item]
+        },
         reload() {
-            setTimeout(() => {
-                window.location.reload()
-            }, 500)
+            this.page = 1
+            this.items = []
+            this.infiniteId += 1
         }
     }
 };
