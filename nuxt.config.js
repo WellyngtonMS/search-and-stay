@@ -9,14 +9,7 @@ export default {
         middleware: [
             'ensureBasicInfo',
             'authenticated'
-        ],
-        extendRoutes(routes, resolve) {
-            routes.push({
-                name: 'index',
-                path: '/',
-                component: resolve(__dirname, 'pages/index.vue')
-            })
-        }
+        ]
     },
 
     // Global page headers: https://go.nuxtjs.dev/config-head
