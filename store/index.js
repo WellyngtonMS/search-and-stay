@@ -34,6 +34,11 @@ export const actions = {
             console.log(error)
         })
     },
+    getHouseRulesById(context, { houseRulesId }) {
+        return this.$axios.$get('/' + houseRulesId).catch((error) => {
+            console.log(error)
+        })
+    },
     createHouseRules(context, { houseRules }) {
         return this.$axios.$post('/', {
             house_rules: houseRules
