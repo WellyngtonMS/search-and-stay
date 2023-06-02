@@ -1,6 +1,6 @@
 <template>
     <v-container fluid>
-        <v-row justify="center" align="center" class="fill-height">
+        <v-row class="fill-height">
             <v-col cols="12" sm="8" md="6" lg="4">
                 <v-card>
                     <v-card-title class="text-center">
@@ -50,5 +50,7 @@ export default {
 <style>
 .fill-height {
     min-height: 100vh;
+    justify-content: center;
+    align-items: center;
 }
 </style>
