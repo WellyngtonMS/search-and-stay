@@ -14,7 +14,7 @@
         </v-list>
         <template v-slot:append>
             <div class="pa-2">
-                <v-btn block>
+                <v-btn block color="error" @click="logout">
                     Logout
                 </v-btn>
             </div>
@@ -46,6 +46,12 @@ export default {
         drawerState (val) {
             this.$emit('update:drawer', val)
         },
-    }
+    },
+    methods: {
+        logout() {
+            this.$store.commit('logout')
+            this.$router.push({ path: '/' })
+        },
+    },
 }
 </script>

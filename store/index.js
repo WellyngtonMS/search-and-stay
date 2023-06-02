@@ -15,6 +15,10 @@ export const mutations = {
     isLoggedIn (state) {
         state.auth.loggedIn = true
     },
+    logout (state) {
+        state.auth.loggedIn = false
+        localStorage.removeItem('token')
+    },
     resetState(state) {
         Object.assign(state, getDefaultState())
     }

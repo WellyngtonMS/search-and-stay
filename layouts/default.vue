@@ -17,7 +17,7 @@
                 >Create Item</v-btn>
                 <v-btn
                     @click="logout"
-                    text
+                    color="error"
                 >Logout</v-btn>
             </v-toolbar-items>
         </v-app-bar>
@@ -53,7 +53,8 @@ export default {
     },
     methods: {
         logout() {
-            console.log('logout')
+            this.$store.commit('logout')
+            this.$router.push({ path: '/' })
         },
     },
 }
