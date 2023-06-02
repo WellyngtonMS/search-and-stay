@@ -16,7 +16,7 @@
 
                 <v-card-actions>
                     <v-spacer></v-spacer>
-                    <v-btn color="primary" @click="createItem">Save</v-btn>
+                    <v-btn color="primary" @click="createItem">Create</v-btn>
                     <v-btn color="secondary" @click="closeDialog">Cancel</v-btn>
                 </v-card-actions>
             </v-card>
