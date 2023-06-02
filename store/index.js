@@ -30,6 +30,13 @@ export const actions = {
             console.log(error)
         })
     },
+    createHouseRules(context, { houseRules }) {
+        return this.$axios.$post('/', {
+            house_rules: houseRules
+        }).catch((error) => {
+            console.log(error)
+        })
+    },
     updateHouseRules(context, { houseRules }) {
         return this.$axios.$put('/' + houseRules.id, {
             house_rules: houseRules
