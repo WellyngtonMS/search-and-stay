@@ -2,10 +2,11 @@
     <v-card>
         <v-card-text>
             <div>{{ name }}</div>
+            <div>Id: {{ Id }}</div>
         </v-card-text>
         <v-card-actions>
-            <v-btn color="primary" @click="openEditDialog">Editar</v-btn>
-            <v-btn color="error" @click="deleteItem">Excluir</v-btn>
+            <v-btn color="primary" @click="openEditDialog">Edit</v-btn>
+            <v-btn color="error" @click="deleteItem">Delete</v-btn>
         </v-card-actions>
         <v-dialog v-model="dialog" max-width="500px">
             <v-card>
@@ -51,6 +52,9 @@ export default {
     computed: {
         name() {
             return this.item.name;
+        },
+        Id() {
+            return this.item.id;
         },
     },
     methods: {
