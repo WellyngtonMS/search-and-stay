@@ -5,7 +5,7 @@
         app
     >
         <v-list>
-            <v-list-item v-for="item in menuItems" :key="item.title" link>
+            <v-list-item v-for="item in menuItems" :key="item.title" :to="item.to" link>
                 <v-list-item-icon>
                     <v-icon>{{ item.icon }}</v-icon>
                 </v-list-item-icon>
@@ -33,7 +33,8 @@ export default {
     data() {
         return {
             menuItems: [
-                { title: 'List', icon: 'mdi-view-list' },
+                { title: 'List Items', icon: 'mdi-view-list', to: { name: 'home' } },
+                { title: 'Create Item', icon: 'mdi-plus', to: { name: 'home', query: { create: true } } },
             ],
             drawerState: this.drawer,
         }

@@ -4,11 +4,21 @@
         <SideMenu :drawer="drawer" @update:drawer="drawer = $event" v-if="isAuthenticated" />
         <v-app-bar app color="primary" v-if="isAuthenticated">
             <v-app-bar-nav-icon @click="drawer = !drawer" v-if="isMobile" />
-            <v-toolbar-title>Meu App</v-toolbar-title>
+            <v-toolbar-title>My App</v-toolbar-title>
             <v-spacer></v-spacer>
             <v-toolbar-items color="white" v-if="!isMobile">
-                <v-btn text>List Items</v-btn>
-                <v-btn text>Logout</v-btn>
+                <v-btn
+                    @click="$router.push({ name: 'home'})"
+                    text
+                >List Items</v-btn>
+                <v-btn
+                    @click="$router.push({ name: 'home', query: { create: true } })"
+                    text
+                >Create Item</v-btn>
+                <v-btn
+                    @click="logout"
+                    text
+                >Logout</v-btn>
             </v-toolbar-items>
         </v-app-bar>
         
@@ -39,6 +49,11 @@ export default {
         },
         isMobile() {
             return this.$vuetify.breakpoint.xsOnly
+        },
+    },
+    methods: {
+        logout() {
+            console.log('logout')
         },
     },
 }
